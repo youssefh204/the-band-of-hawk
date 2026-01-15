@@ -1,0 +1,220 @@
+/* --- INTEGRATED CONTAINER (Transparent) --- */
+.dashboard-container {
+  /* No fixed height, no background color - lets Home.jsx handle it */
+  width: 100%;
+  padding: 0; 
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Hide the big header if you want it to look cleaner, 
+   or keep it if you want a title. I recommend keeping it smaller. */
+.dashboard-header {
+  margin-bottom: 20px;
+  text-align: left; /* Align left to match other Home content */
+  padding-left: 10px;
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  text-shadow: none;
+}
+
+/* ... Keep the rest of your CSS (Tables, Modals, Buttons) exactly the same ... */
+
+/* --- GLASSMORPHISM CARDS --- */
+.dashboard-section {
+  background: rgba(45, 20, 60, 0.85); /* Dark semi-transparent purple */
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.dashboard-section h2 {
+  margin-top: 0;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* --- TABLE STYLES (Fixes the broken layout) --- */
+.workshop-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px; /* Space between rows */
+}
+
+.workshop-table th {
+  text-align: left;
+  padding: 15px;
+  color: #aaa; /* Lighter gray for headers */
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.workshop-table tbody tr {
+  background: rgba(255, 255, 255, 0.05); /* Very slight background for rows */
+  transition: transform 0.2s, background 0.2s;
+  border-radius: 8px;
+}
+
+.workshop-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.workshop-table td {
+  padding: 15px;
+  color: white;
+  vertical-align: middle;
+}
+
+.workshop-table td strong {
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+/* --- STATUS BADGES --- */
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+.status-badge.approved { background-color: #00e676; color: #000; box-shadow: 0 0 10px #00e67680; }
+.status-badge.pending { background-color: #ffea00; color: #000; box-shadow: 0 0 10px #ffea0080; }
+.status-badge.rejected { background-color: #ff1744; color: #fff; box-shadow: 0 0 10px #ff174480; }
+.status-badge.needs-edits { background-color: #00b0ff; color: #fff; box-shadow: 0 0 10px #00b0ff80; }
+
+/* --- BUTTONS --- */
+.view-btn {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.view-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
+}
+
+/* --- POPUP (MODAL) --- */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.85);
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: #2a1b3d;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 500px;
+  max-width: 90%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 { margin: 0; font-size: 1.2rem; }
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #ff4d4d;
+  transition: transform 0.2s;
+}
+.close-btn:hover { transform: scale(1.2); color: #ff0000; }
+
+.modal-body {
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  color: white !important; /* Forces text to be white */
+}
+
+/* --- PARTICIPANTS LIST --- */
+.participants-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.participants-list li {
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.p-info { display: flex; flex-direction: column; }
+.p-name { font-weight: bold; font-size: 1.1rem; }
+.p-email { font-size: 0.9rem; color: #ccc; }
+.p-status {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+.p-status.registered { background: #00e676; color: black; }
+
+/* --- MESSAGES --- */
+.no-data {
+  text-align: center;
+  font-style: italic;
+  color: #ccc;
+  padding: 20px;
+}
+
+.dashboard-loading, .dashboard-error {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.5rem;
+    color: white;
+}
+.dashboard-error { color: #ff4d4d; }
